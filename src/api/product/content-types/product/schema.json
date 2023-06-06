@@ -29,35 +29,14 @@
         "audios"
       ]
     },
-    "img2": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "price": {
       "type": "decimal"
-    },
-    "isNew": {
-      "type": "boolean",
-      "default": false
     },
     "categories": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "products"
-    },
-    "sub_categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::sub-category.sub-category",
-      "mappedBy": "products"
     },
     "type": {
       "type": "enumeration",
@@ -66,6 +45,12 @@
         "featured",
         "trending"
       ]
+    },
+    "rating": {
+      "type": "decimal"
+    },
+    "quantity": {
+      "type": "integer"
     }
   }
 }

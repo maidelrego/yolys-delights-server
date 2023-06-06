@@ -15,12 +15,6 @@
     "title": {
       "type": "string"
     },
-    "products": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "inversedBy": "sub_categories"
-    },
     "categories": {
       "type": "relation",
       "relation": "manyToMany",
