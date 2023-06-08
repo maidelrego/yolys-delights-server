@@ -1,20 +1,26 @@
-
+const { fillTemplate } = require("../../../../lib/emailTemplateReplace");
+const fs = require('fs')
+const path = require('path')
 module.exports = {
-  async afterUpdate(event) {    // Connected to "Save" button in admin panel
-      const { result } = event;
+  async afterUpdate(event) {
+    const templatePath = path.resolve(__dirname, '..', '..', '..', '..', 'lib', 'template.html');
+    const template = fs.readFileSync(templatePath, 'utf8');
+    const { result } = event;
 
-      try{
-          await strapi.plugins['email'].services.email.send({
-            to: 'maesabroso@gmail.com',
-            from: 'yolydelights@gmail.com', // e.g. single sender verification in SendGrid
-            replyTo: 'yolydelights@gmail.com',
-            subject: 'The Strapi Email plugin worked successfully',
-            text: '${fieldName}', // Replace with a valid field ID
-            html: 'Hello world!', 
-              
-          })
-      } catch(err) {
-          console.log('YOOOO', err.response.body.errors);
-      }
-  }
-}
+    const emailTemplate = await fillTemplate(template, result)
+
+    
+    try {
+      await strapi.plugins["email"].services.email.send({
+        to: result.email,
+        from: "yolydelights@gmail.com",
+        cc: "maesabroso@gmail.com",
+        replyTo: "yolydelights@gmail.com",
+        subject: "Yoly's Delights Order Confirmation",
+        html: emailTemplate,
+      });
+    } catch (err) {
+      console.log("ERROR", err.response.body.errors);
+    }
+  },
+};

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-06-08T03:52:47.012Z"
+    "x-generation-date": "2023-06-08T19:38:17.808Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1477,6 +1477,23 @@
                   "success",
                   "cancel"
                 ]
+              },
+              "customerName": {
+                "type": "string"
+              },
+              "orderTypeDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "orderType": {
+                "type": "string",
+                "enum": [
+                  "delivery",
+                  "pickup"
+                ]
+              },
+              "address": {
+                "type": "string"
               }
             }
           }
@@ -1544,6 +1561,23 @@
               "success",
               "cancel"
             ]
+          },
+          "customerName": {
+            "type": "string"
+          },
+          "orderTypeDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "orderType": {
+            "type": "string",
+            "enum": [
+              "delivery",
+              "pickup"
+            ]
+          },
+          "address": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",

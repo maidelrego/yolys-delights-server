@@ -28,6 +28,22 @@
         "cancel"
       ],
       "default": "cancel"
+    },
+    "customerName": {
+      "type": "string"
+    },
+    "orderTypeDate": {
+      "type": "date"
+    },
+    "orderType": {
+      "type": "enumeration",
+      "enum": [
+        "delivery",
+        "pickup"
+      ]
+    },
+    "address": {
+      "type": "string"
     }
   }
 }
