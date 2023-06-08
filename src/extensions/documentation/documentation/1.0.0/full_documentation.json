@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-06-06T17:53:52.299Z"
+    "x-generation-date": "2023-06-08T03:52:47.012Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1305,14 +1305,6 @@
                             }
                           }
                         },
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "normal",
-                            "featured",
-                            "trending"
-                          ]
-                        },
                         "rating": {
                           "type": "number",
                           "format": "float"
@@ -1478,7 +1470,14 @@
               "stripeId": {
                 "type": "string"
               },
-              "products": {}
+              "products": {},
+              "status": {
+                "type": "string",
+                "enum": [
+                  "success",
+                  "cancel"
+                ]
+              }
             }
           }
         }
@@ -1539,6 +1538,13 @@
             "type": "string"
           },
           "products": {},
+          "status": {
+            "type": "string",
+            "enum": [
+              "success",
+              "cancel"
+            ]
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -1903,14 +1909,6 @@
                   ],
                   "example": "string or id"
                 }
-              },
-              "type": {
-                "type": "string",
-                "enum": [
-                  "normal",
-                  "featured",
-                  "trending"
-                ]
               },
               "rating": {
                 "type": "number",
@@ -2945,14 +2943,6 @@
                                           }
                                         }
                                       },
-                                      "type": {
-                                        "type": "string",
-                                        "enum": [
-                                          "normal",
-                                          "featured",
-                                          "trending"
-                                        ]
-                                      },
                                       "rating": {
                                         "type": "number",
                                         "format": "float"
@@ -3155,14 +3145,6 @@
                 }
               }
             }
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "normal",
-              "featured",
-              "trending"
-            ]
           },
           "rating": {
             "type": "number",
@@ -4146,14 +4128,6 @@
                                             }
                                           }
                                         }
-                                      },
-                                      "type": {
-                                        "type": "string",
-                                        "enum": [
-                                          "normal",
-                                          "featured",
-                                          "trending"
-                                        ]
                                       },
                                       "rating": {
                                         "type": "number",

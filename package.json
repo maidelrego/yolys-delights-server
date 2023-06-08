@@ -14,6 +14,7 @@
     "@strapi/plugin-documentation": "^4.10.7",
     "@strapi/plugin-i18n": "4.10.7",
     "@strapi/plugin-users-permissions": "4.10.7",
+    "@strapi/provider-email-sendgrid": "^4.11.0",
     "@strapi/strapi": "4.10.7",
     "mysql": "2.18.1",
     "stripe": "^12.8.0"
