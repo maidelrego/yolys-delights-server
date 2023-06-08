@@ -30,9 +30,20 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         })
       );
 
+      let shipping_options = []
+
+      if (data.orderType === 'delivery') {
+        shipping_options = [
+          {
+            shipping_rate: 'shr_1NGqukACYIku6EnugKg0srwo',
+          },
+        ]
+      }
+
       const session = await stripe.checkout.sessions.create({
         shipping_address_collection: {allowed_countries: ['US']},
         payment_method_types: ["card"],
+        shipping_options: shipping_options,
         mode: "payment",
         success_url: process.env.CLIENT_URL+"/paymentSuccess?session_id={CHECKOUT_SESSION_ID}",
         cancel_url: process.env.CLIENT_URL,
