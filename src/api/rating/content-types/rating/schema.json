@@ -4,7 +4,8 @@
   "info": {
     "singularName": "rating",
     "pluralName": "ratings",
-    "displayName": "Rating"
+    "displayName": "Rating",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,11 +15,11 @@
     "ratingValue": {
       "type": "decimal"
     },
-    "productId": {
+    "products": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "api::product.product",
-      "inversedBy": "ratings"
+      "mappedBy": "rating"
     },
     "comments": {
       "type": "string"
