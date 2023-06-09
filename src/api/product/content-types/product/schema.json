@@ -35,11 +35,14 @@
       "target": "api::category.category",
       "inversedBy": "products"
     },
-    "rating": {
-      "type": "decimal"
-    },
     "quantity": {
       "type": "integer"
+    },
+    "ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rating.rating",
+      "mappedBy": "productId"
     }
   }
 }
