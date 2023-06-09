@@ -38,11 +38,11 @@
     "quantity": {
       "type": "integer"
     },
-    "rating": {
+    "ratings": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "api::rating.rating",
-      "inversedBy": "products"
+      "mappedBy": "product"
     }
   }
 }
