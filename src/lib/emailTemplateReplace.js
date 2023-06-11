@@ -237,13 +237,14 @@ async function fillTemplate(template, data) {
           template = template.replace(m, data.products.length);
           break;
         case "subTotal":
-          template = template.replace(m, subTotal);
+          template = template.replace(m, formatCurrencyUSD(subTotal));
           break;
         case "shippingAmount":
           template = template.replace(m, shipping);
           break;
         case "orderTotal":
-          template = template.replace(m, Number(subTotal) + Number(shipping));
+          const total = Number(subTotal) + Number(shipping)
+          template = template.replace(m, total.toFixed(2));
           break;
         case "deliveryAddress":
           if (orderType) {
