@@ -240,10 +240,45 @@ async function fillTemplate(template, data) {
           template = template.replace(m, formatCurrencyUSD(subTotal));
           break;
         case "shippingAmount":
-          template = template.replace(m, shipping);
+          if (orderType) {
+            const html = `
+            <tr style="border-collapse: collapse">
+              <td
+                style="
+                  padding: 0;
+                  margin: 0;
+                  text-align: right;
+                  font-size: 18px;
+                  line-height: 27px;
+                "
+              >
+                Flat-rate Delivery Fee:
+              </td>
+              <td
+                style="
+                  padding: 0;
+                  margin: 0;
+                  text-align: right;
+                  font-size: 18px;
+                  line-height: 27px;
+                "
+              >
+                ${shipping}
+              </td>
+            </tr>
+            `;
+            template = template.replace(m, html);
+          } else {
+            template = template.replace(m, "");
+          }
           break;
         case "orderTotal":
-          const total = Number(subTotal) + Number(shipping)
+          let total = 0;
+          if (orderType) {
+            total = Number(subTotal) + Number(shipping);
+          } else {
+            total = Number(subTotal);
+          }
           template = template.replace(m, total.toFixed(2));
           break;
         case "deliveryAddress":
