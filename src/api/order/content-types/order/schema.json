@@ -33,7 +33,7 @@
       "type": "string"
     },
     "orderTypeDate": {
-      "type": "date"
+      "type": "datetime"
     },
     "orderType": {
       "type": "enumeration",
@@ -43,6 +43,9 @@
       ]
     },
     "address": {
+      "type": "string"
+    },
+    "notes": {
       "type": "string"
     }
   }

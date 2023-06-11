@@ -1,55 +1,195 @@
 const { formatCurrencyUSD } = require("./filters");
+const moment = require("moment");
 
 function createProductList(products) {
   const list = products.map((p) => {
     return `
     <tr style="border-collapse: collapse">
       <td
+        align="left"
         style="
-          padding: 5px 10px 5px 0;
           margin: 0;
+          padding-top: 5px;
+          padding-bottom: 10px;
+          padding-left: 20px;
+          padding-right: 20px;
         "
-        width="80%"
-        align="left"
       >
-        <p
-          style="
-            margin: 0;
-            -webkit-text-size-adjust: none;
-            -ms-text-size-adjust: none;
-            mso-line-height-rule: exactly;
-            font-family: 'open sans',
-              'helvetica neue', helvetica,
-              arial, sans-serif;
-            line-height: 24px;
-            color: #333333;
-            font-size: 12px;
-          "
+        <table
+          cellspacing="0"
+          cellpadding="0"
+          width="100%"
+          style="border-collapse: collapse; border-spacing: 0px"
         >
-          ${p.title} x ${p.quantity}
-        </p>
+          <tr style="border-collapse: collapse">
+            <td
+              align="left"
+              style="padding: 0; margin: 0; width: 560px"
+            >
+              <table
+                width="100%"
+                cellspacing="0"
+                cellpadding="0"
+                role="presentation"
+                style="
+                  border-collapse: collapse;
+                  border-spacing: 0px;
+                "
+              >
+                <tr style="border-collapse: collapse">
+                  <td
+                    align="left"
+                    style="padding: 0; margin: 0"
+                  >
+                    <p
+                      style="
+                        margin: 0;
+                        -webkit-text-size-adjust: none;
+                        -ms-text-size-adjust: none;
+                        font-family: arial, 'helvetica neue',
+                          helvetica, sans-serif;
+                        line-height: 21px;
+                        color: #333333;
+                        font-size: 14px;
+                      "
+                    >
+                      <br />
+                    </p>
+                    <table
+                      style="
+                        border-collapse: collapse;
+                        border-spacing: 0px;
+                        width: 100%;
+                      "
+                      class="cke_show_border"
+                      cellspacing="1"
+                      cellpadding="1"
+                      border="0"
+                      role="presentation"
+                    >
+                      <tr style="border-collapse: collapse">
+                        <td style="padding: 0; margin: 0">
+                          ${p.title}
+                        </td>
+                        <td
+                          style="
+                            padding: 0;
+                            margin: 0;
+                            width: 60px;
+                            text-align: center;
+                          "
+                        >
+                          ${p.quantity}
+                        </td>
+                        <td
+                          style="
+                            padding: 0;
+                            margin: 0;
+                            width: 100px;
+                            text-align: center;
+                          "
+                        >
+                          ${formatCurrencyUSD(p.price)}
+                        </td>
+                      </tr>
+                    </table>
+                    <p
+                      style="
+                        margin: 0;
+                        -webkit-text-size-adjust: none;
+                        -ms-text-size-adjust: none;
+                        font-family: arial, 'helvetica neue',
+                          helvetica, sans-serif;
+                        line-height: 21px;
+                        color: #333333;
+                        font-size: 14px;
+                      "
+                    >
+                      <br />
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
       </td>
+    </tr>
+    <tr style="border-collapse: collapse">
       <td
-        style="padding: 5px 0; margin: 0"
-        width="20%"
         align="left"
+        style="
+          padding: 0;
+          margin: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+        "
       >
-        <p
-          style="
-            margin: 0;
-            -webkit-text-size-adjust: none;
-            -ms-text-size-adjust: none;
-            mso-line-height-rule: exactly;
-            font-family: 'open sans',
-              'helvetica neue', helvetica,
-              arial, sans-serif;
-            line-height: 24px;
-            color: #333333;
-            font-size: 12px;
-          "
+        <table
+          width="100%"
+          cellspacing="0"
+          cellpadding="0"
+          style="border-collapse: collapse; border-spacing: 0px"
         >
-          $${formatCurrencyUSD(p.price)}
-        </p>
+          <tr style="border-collapse: collapse">
+            <td
+              valign="top"
+              align="center"
+              style="padding: 0; margin: 0; width: 560px"
+            >
+              <table
+                width="100%"
+                cellspacing="0"
+                cellpadding="0"
+                role="presentation"
+                style="
+                  border-collapse: collapse;
+                  border-spacing: 0px;
+                "
+              >
+                <tr style="border-collapse: collapse">
+                  <td
+                    align="center"
+                    style="
+                      padding: 0;
+                      margin: 0;
+                      padding-bottom: 10px;
+                      font-size: 0;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                      role="presentation"
+                      style="
+                        border-collapse: collapse;
+                        border-spacing: 0px;
+                      "
+                    >
+                      <tr style="border-collapse: collapse">
+                        <td
+                          style="
+                            padding: 0;
+                            margin: 0;
+                            border-bottom: 1px solid #efefef;
+                            background: #ffffff none repeat
+                              scroll 0% 0%;
+                            height: 1px;
+                            width: 100%;
+                            margin: 0px;
+                          "
+                        ></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
     `;
@@ -57,11 +197,11 @@ function createProductList(products) {
   return list.join("");
 }
 
-function orderTotal(products) {
+function subTotalCal(products) {
   const total = products.reduce((acc, p) => {
     return acc + p.price * p.quantity;
   }, 0);
-  return formatCurrencyUSD(total);
+  return total;
 }
 
 async function fillTemplate(template, data) {
@@ -79,8 +219,13 @@ async function fillTemplate(template, data) {
       }
 
       const orderType = data.orderType === "delivery" ? true : false;
+      const subTotal = subTotalCal(data.products);
+      const shipping = process.env.SHIPPING_FEE;
 
       switch (prop) {
+        case "customerName":
+          template = template.replace(m, data.customerName);
+          break;
         case "orderId":
           template = template.replace(m, data.id);
           break;
@@ -88,9 +233,18 @@ async function fillTemplate(template, data) {
           const productsHtml = createProductList(data.products);
           template = template.replace(m, productsHtml);
           break;
+        case "productsTotal":
+          template = template.replace(m, data.products.length);
+          break;
+        case "subTotal":
+          template = template.replace(m, subTotal);
+          break;
+        case "shippingAmount":
+          template = template.replace(m, shipping);
+          break;
         case "orderTotal":
-          const total = orderTotal(data.products);
-          template = template.replace(m, total);
+          template = template.replace(m, Number(subTotal) + Number(shipping));
+          break;
         case "deliveryAddress":
           if (orderType) {
             template = template.replace(m, data.address);
@@ -106,7 +260,10 @@ async function fillTemplate(template, data) {
           }
           break;
         case "deliveryDate":
-          template = template.replace(m, data.orderTypeDate);
+          template = template.replace(
+            m,
+            moment(data.orderTypeDate).format("MM-DD-YYYY hh:mm A")
+          );
           break;
         default:
           template = template.replace(m, "NOT FOUND");

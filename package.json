@@ -17,6 +17,7 @@
     "@strapi/provider-email-sendgrid": "^4.11.0",
     "@strapi/provider-upload-cloudinary": "^4.11.0",
     "@strapi/strapi": "4.10.7",
+    "moment": "^2.29.4",
     "mysql": "2.18.1",
     "pg": "^8.11.0",
     "pg-connection-string": "^2.6.0",
