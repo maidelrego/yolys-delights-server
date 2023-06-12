@@ -239,6 +239,10 @@ async function fillTemplate(template, data) {
         case "subTotal":
           template = template.replace(m, formatCurrencyUSD(subTotal));
           break;
+        case "addressType": 
+          const word = orderType ? "DELIVERY" : "PICKUP"
+          template = template.replace(m, word)
+          break;
         case "shippingAmount":
           if (orderType) {
             const html = `
