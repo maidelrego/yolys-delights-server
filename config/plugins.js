@@ -3,9 +3,9 @@ module.exports = ({ env }) => ({
     // ...
     email: {
       config: {
-        provider: 'sendgrid', // For community providers pass the full package name (e.g. provider: 'strapi-provider-email-mandrill')
+        provider: 'strapi-provider-email-resend',
         providerOptions: {
-          apiKey: env('SENDGRID_API_KEY'),
+          apiKey: env('RESEND_API_KEY'),
         },
         settings: {
           defaultFrom: 'noreply@yolysdelights.com',
